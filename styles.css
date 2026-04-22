@@ -503,11 +503,92 @@ select {
     width: min(100% - 20px, 100%);
   }
 
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .brand {
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .brand-mark {
+    min-width: 132px;
+    min-height: 42px;
+    padding: 0;
+  }
+
+  .brand-logo {
+    max-width: 132px;
+  }
+
+  .brand-copy h1 {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+
+  .brand-copy p {
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .nav a {
+    justify-content: center;
+    text-align: center;
+    padding: 10px 8px;
+    font-size: 0.92rem;
+  }
+
+  .nav a:last-child {
+    grid-column: 1 / -1;
+  }
+
   .topbar,
   .hero,
   .card,
   .glass {
     border-radius: 18px;
+  }
+
+  .hero {
+    margin-top: 16px;
+    padding: 20px;
+  }
+
+  .hero h2 {
+    margin-top: 12px;
+    font-size: clamp(1.65rem, 8vw, 2.15rem);
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .status-row {
+    gap: 8px;
+  }
+
+  .pill {
+    padding: 8px 10px;
+    font-size: 0.84rem;
+  }
+
+  .btn {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 0.92rem;
   }
 
   .timeline-item {
@@ -517,5 +598,9 @@ select {
 
   .table-row {
     grid-template-columns: 1fr;
+  }
+
+  .section {
+    gap: 16px;
   }
 }
