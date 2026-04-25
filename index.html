@@ -4463,8 +4463,8 @@
         const dy = ey - sy;
         const angle = Math.atan2(dy * (mobileViewport ? .34 : .72), dx) * 180 / Math.PI;
         const depthMode = pick(['far', 'mid', 'close']);
-          const isFeatureMeteor = forceFeature || (mobileViewport ? Math.random() < .82 : (Math.random() < .35 || inPeak()));
-          const isFireball = isFeatureMeteor && Math.random() < (mobileViewport ? .24 : .50);
+          const isFeatureMeteor = forceFeature || (mobileViewport ? Math.random() < .55 : (Math.random() < .35 || inPeak()));
+          const isFireball = isFeatureMeteor && Math.random() < (mobileViewport ? .16 : .50);
           const depthPreset = depthMode === 'far'
           ? { zStart: rand(-420, -260), zEnd: rand(90, 170), scaleStart: rand(.40, .56), scaleEnd: rand(1.12, 1.28), blurStart: rand(2.4, 3.5), blurEnd: rand(.10, .22), width: mobileViewport ? rand(120, 160) : rand(122, 182), height: mobileViewport ? rand(1.35, 1.75) : rand(1.9, 2.35) }
             : depthMode === 'mid'
@@ -4479,8 +4479,8 @@
             depthPreset.blurEnd = Math.max(depthPreset.blurEnd * 0.34, 0.015);
           }
           const tailLength = isFeatureMeteor
-          ? rand(mobileViewport ? 3.2 : 1.38, mobileViewport ? 4.6 : 1.92)
-            : rand(mobileViewport ? 1.52 : 0.88, mobileViewport ? 2.18 : 1.18);
+          ? rand(mobileViewport ? 2.6 : 1.38, mobileViewport ? 3.8 : 1.92)
+            : rand(mobileViewport ? 1.18 : 0.88, mobileViewport ? 1.72 : 1.18);
 
         const meteor = document.createElement('span');
         meteor.className = `${isFeatureMeteor ? 'meteor meteor-feature' : 'meteor'}${isFireball ? ' meteor-fireball' : ''}${absorbCore ? ' meteor-absorb' : ''}`;
@@ -4513,11 +4513,11 @@
         meteor.style.width = `${depthPreset.width}px`;
         meteor.style.height = `${depthPreset.height}px`;
         meteor.style.animationDuration = isFeatureMeteor
-          ? `${rand(mobileViewport ? 0.94 : 1.02, mobileViewport ? 1.22 : 1.18)}s`
-          : `${rand(mobileViewport ? 0.78 : 1.16, mobileViewport ? 1.00 : 1.34)}s`;
+          ? `${rand(mobileViewport ? 1.00 : 1.02, mobileViewport ? 1.28 : 1.18)}s`
+          : `${rand(mobileViewport ? 0.86 : 1.16, mobileViewport ? 1.08 : 1.34)}s`;
         if (absorbCore) {
           meteor.style.animationName = mobileViewport ? 'meteorAbsorbMobile' : 'meteorAbsorb';
-          meteor.style.animationDuration = mobileViewport ? `${rand(0.90, 1.16)}s` : `${rand(1.02, 1.34)}s`;
+          meteor.style.animationDuration = mobileViewport ? `${rand(0.96, 1.22)}s` : `${rand(1.02, 1.34)}s`;
           meteor.style.setProperty('--meteor-duration', meteor.style.animationDuration);
         }
         meteor.style.setProperty('--meteor-duration', meteor.style.animationDuration);
@@ -4529,8 +4529,8 @@
         activeMeteors += 1;
         layer.appendChild(meteor);
 
-        const chainChance = mobileViewport ? 0.82 : (inPeak() ? 0.64 : 0.28);
-        const chainDelay = mobileViewport ? rand(480, 1180) : (inPeak() ? rand(1500, 3500) : rand(4000, 7000));
+        const chainChance = mobileViewport ? 0.52 : (inPeak() ? 0.64 : 0.28);
+        const chainDelay = mobileViewport ? rand(900, 1800) : (inPeak() ? rand(1500, 3500) : rand(4000, 7000));
 
         if (activeMeteors < 3 && Math.random() < chainChance) {
           window.setTimeout(spawn, chainDelay);
@@ -4551,7 +4551,7 @@
             }
           } else {
             hero.classList.remove('peak-night');
-            const delay = mobileViewport ? rand(500, 1120) : rand(4000, 7000);
+            const delay = mobileViewport ? rand(900, 1800) : rand(4000, 7000);
             if (activeMeteors < 3) {
               window.setTimeout(spawn, delay);
             }
@@ -4562,12 +4562,12 @@
       paintMeteorStory();
       if (mobileViewport) {
         const kickMobileMeteor = () => {
-          spawn(Math.random() < 0.94);
-          window.setTimeout(kickMobileMeteor, rand(520, 1120));
+          spawn(Math.random() < 0.68);
+          window.setTimeout(kickMobileMeteor, rand(900, 1800));
         };
-        window.setTimeout(kickMobileMeteor, 120);
-        window.setTimeout(kickMobileMeteor, 620);
+        window.setTimeout(kickMobileMeteor, 220);
         window.setTimeout(kickMobileMeteor, 1200);
+        window.setTimeout(kickMobileMeteor, 2400);
       } else {
         window.setTimeout(spawn, rand(240, 900));
       }
